@@ -11,17 +11,20 @@ const pauseBtn = document.getElementById('pause-btn') as HTMLInputElement;
 const resumeBtn = document.getElementById('resume-btn') as HTMLInputElement;
 // Voice Selection
 const voiceSelect = document.getElementById('voiceSelect') as HTMLSelectElement;
+const defaultOption = document.getElementById('default-option') as HTMLOptionElement;
 
 // Check web browser if speechSynthesis supported
 if ("speechSynthesis" in window) {
-     displayStatus.innerText = 'Supported';
+     displayStatus.innerText = 'Text-To-Speech';
 } else {
-     displayStatus.innerText = 'Not Supported';
+     displayStatus.innerText = 'Your browser does not support TexToSpeech';
 }
 
 // Event Listeners
 ttsForm.addEventListener('submit', handleSubmit);
 textInput.addEventListener('change', handleChange);
+pauseBtn.addEventListener('click', handlePause);
+resumeBtn.addEventListener('click', handleResume);
 // TTS
 function speak(): SpeechSynthesisUtterance {
      const utterThis = new SpeechSynthesisUtterance(text);
@@ -32,14 +35,18 @@ function speak(): SpeechSynthesisUtterance {
 
      // get selected option
      let selectedOption: string = voiceSelect.selectedOptions[0].getAttribute("data-name");
-     if (selectedOption === 'default show') {
+     
+     if (selectedOption === 'default') {
           return;
+     } else {
+          defaultOption.classList.remove('show');
      }
 
      for (let i: number = 0; i < voices.length; i++) {
           if (voices[i].name === selectedOption) {
                utterThis.voice = voices[i];
           }
+
      }
 
      synth.speak(utterThis);
@@ -50,10 +57,24 @@ function handleSubmit(event: MouseEvent): void {
      event.preventDefault();
      speak();
      textInput.blur();
+     pauseBtn.classList.add('show');
+     resumeBtn.classList.remove('show');
 }
-function handleChange(event: Event): void {
+function handleChange(): void {
      const newText: string = textInput.value;
      text = newText;
+}
+function handlePause(event: MouseEvent): void {
+     event.preventDefault();
+     speechSynthesis.pause();
+     pauseBtn.classList.remove('show');
+     resumeBtn.classList.add('show');
+}
+function handleResume(event: MouseEvent): void {
+     event.preventDefault();
+     speechSynthesis.resume();
+     pauseBtn.classList.add('show');
+     resumeBtn.classList.remove('show');
 }
 
 // Get all voices
