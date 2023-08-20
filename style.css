@@ -15,3 +15,28 @@
 .resume.show {
      display: block;
 }
+
+.default-option.show {
+     display: block;
+}
+.default-option {
+     display: none;
+}
+
+#main {
+     display: flex;
+     justify-content: center;
+}
+
+#tts-form {
+     display: flex;
+     flex-direction: column;
+     margin: 50px;
+     justify-content: center;
+     text-align: center;
+     font-size: 20px;
+}
+
+#text-input {
+     resize: vertical;
+}
