@@ -12,8 +12,11 @@
           <h1 id="display-status"></h1>
           <!--Form-->
           <form id="tts-form">
-               <input type="text" value="Hello World" id="text-input" required>
+               <textarea name="" id="text-input" cols="30" rows="10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Temporibus laudantium, exercitationem sit facilis a earum doloremque sapiente dignissimos expedita rerum molestiae architecto ad voluptatum quidem veritatis nulla debitis iusto deserunt.</textarea>
                <input type="submit" value="Speak" id="speak-btn">
+               <button id="pause-btn" class="pause show">Pause</button>
+               <button id="resume-btn" class="resume show">Resume</button>
+               <select id="voiceSelect"></select>
           </form>
      </div>
      <script src="src/main.js" defer></script>

@@ -3,3 +3,15 @@
 }
 
 /* TTS */
+.pause {
+     display: none;
+}
+.pause.show {
+     display: block;
+}
+.resume {
+     display: none;
+}
+.resume.show {
+     display: block;
+}
