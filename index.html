@@ -8,17 +8,17 @@
 </head>
 <body>
      <div id="main">
-          <!--Display Status-->
-          <h1 id="display-status"></h1>
           <!--Form-->
           <form id="tts-form">
+               <!--Display Status-->
+               <h1 id="display-status"></h1>
                <textarea id="text-input" placeholder="Your text here..." cols="30" rows="10" required></textarea>
-               <input type="submit" value="Speak" id="speak-btn">
-               <input type="button" value="Pause" id="pause-btn">
-               <input type="button" value="Resume" id="resume-btn">
                <select id="voiceSelect">
                     <option class="default-option show" id="default-option" data-name="default">Select voice</option>
                </select>
+               <input type="submit" value="Speak" id="speak-btn">
+               <input type="button" value="Pause" id="pause-btn" class="pause">
+               <input type="button" value="Resume" id="resume-btn" class="resume">
           </form>
      </div>
      <script src="dist/main.js" defer></script>
